@@ -104,6 +104,7 @@ func (*server) GetMaximum(stream pb.CalculatorService_GetMaximumServer) error {
 
 func main() {
 	flag.Parse()
+	fmt.Println("\nServer started...")
 	listen, err := net.Listen("tcp", fmt.Sprintf("0.0.0.0: %d", *port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
