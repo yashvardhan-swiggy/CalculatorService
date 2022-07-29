@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "./;proto";
+
+message GetSumRequest {
+  int64 num1 = 1;
+  int64 num2 = 2;
+}
+
+message GetSumResponse {
+  int64 sum = 1;
+}
+
+message GetPrimeNumbersRequest {
+  int64 num = 1;
+}
+
+message GetPrimeNumbersResponse {
+  int64 prime = 1;
+}
+
+message GetAverageRequest {
+  int64 num = 1;
+}
+
+message GetAverageResponse {
+  int64 average = 1;
+}
+
+message GetMaximumNumberRequest {
+  int64 num = 1;
+}
+
+message GetMaximumNumberResponse {
+  int64 maximumNum = 1;
+}
+
+service CalculatorService {
+
+  rpc GetSum (GetSumRequest) returns (GetSumResponse) {};
+
+  rpc GetPrimeNumbers (GetPrimeNumbersRequest) returns (stream GetPrimeNumbersResponse) {};
+
+  rpc GetAverage (stream GetAverageRequest) returns (GetAverageResponse) {};
+
+  rpc GetMaximum (stream GetMaximumNumberRequest) returns (stream GetMaximumNumberResponse) {};
+
+}
+
+
