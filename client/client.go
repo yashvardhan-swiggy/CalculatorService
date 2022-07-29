@@ -183,6 +183,7 @@ func GetMaximum(client pb.CalculatorServiceClient) {
 			}
 			time.Sleep(100 * time.Millisecond)
 		}
+		stream.CloseSend()
 	}(requests)
 
 	go func() {
@@ -200,5 +201,5 @@ func GetMaximum(client pb.CalculatorServiceClient) {
 	}()
 
 	<-waitChan
-	fmt.Println("\n")
+	fmt.Println()
 }
